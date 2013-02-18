@@ -1,6 +1,6 @@
 (function (game){
 	
-	game.stage = (function(gameStage,layers,enemies,player) {
+	game.engine = (function(gameStage,layers,enemies,player) {
 					
 				$.each(layers,function(index,value){
 						collie.Renderer.addLayer(value);

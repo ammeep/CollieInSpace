@@ -15,7 +15,7 @@
 	
 	var collieTheExplorer = (function () {
   
-	  	var gameStage;
+	  	var gameEngine;
 		var gameContainer;
 		  
 	    function initialiseCollieImageManager(){
@@ -38,7 +38,7 @@
 	    function initialiseGameObjects(){
 	    	var layers;
 	       layers = [background.layer(),ground.layer(),enemies.layer(),player.layer()];
-	       gameStage = new game.stage(gameContainer,layers,enemies, player);
+	       gameEngine = new game.engine(gameContainer,layers,enemies, player);
 	    }
 	    
 	    return{
@@ -46,7 +46,7 @@
 	            initialiseCollieImageManager();   
 	            initialiseGameCanvas();    
 	            initialiseGameObjects();
-	            gameStage.start();         
+	            gameEngine.start();         
 	        }            
 	    };
    
