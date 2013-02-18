@@ -42,6 +42,8 @@
 	       $.each(layers,function(index,value){
 				collie.Renderer.addLayer(value);
 		   });				
+		   
+		   collie.Renderer.load(gameContainer[0]);
 	       gameEngine = new game.engine(gameContainer,enemies, player);
 	    }
 	    
