@@ -6,36 +6,13 @@
 </head>
 <body>
 <div id="container"></div>
+
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="js/pubsub.js"></script>
 <script type="text/javascript" src="js/collie.min.js"></script>
 <script type="text/javascript" src="js/stage.js"></script>
 <script type="text/javascript" src="js/background.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="js/main.js"></script>
 
-
-collie.ImageManager.add({
-	rabbit:   "images/rabbit_walk.png",
-	ground:   "images/ground.png",
-	sky:	  "images/sky.png",
-	cloud2:	  "images/cloud2.png",
-	mountain: "images/mountain.png",
-	mushroom: "images/mushroom.png"
-	
-});
-
-
-var gameContainer = document.getElementById('container');
-gameContainer.style.width = window.innerWidth + 'px';
-gameContainer.style.height = window.innerHeight + 'px';
-
-var layers = [background.layer(),ground.layer(),enemies.layer(),player.layer()];
-var gameStage = new stage(document.getElementById("container"),layers,enemies, player);
-
-gameStage.start();
-
-
-
-</script>
 </body>
 </html>

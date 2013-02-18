@@ -24,7 +24,7 @@ var stage = (function(gameStage,layers,enemies,player) {
 			collie.Renderer.stop();	
 	}
 	
-	collie.Renderer.load(gameStage);
+	collie.Renderer.load(gameStage[0]);
 	
 	return (function() {
 		
