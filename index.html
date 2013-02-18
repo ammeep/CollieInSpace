@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="pubsub.js"></script>
+<script type="text/javascript" src="collie.min.js"></script>
+<script type="text/javascript" src="stage.js"></script>
+<script type="text/javascript" src="background.js"></script>
+<script type="text/javascript">
+
+
+collie.ImageManager.add({
+	rabbit:   "rabbit_walk.png",
+	ground:   "ground.png",
+	sky:	  "sky.png",
+	cloud2:	  "cloud2.png",
+	mountain: "mountain.png",
+	mushroom: "mushroom.png"
+	
+});
+
+
+var gameContainer = document.getElementById('container');
+gameContainer.style.width = window.innerWidth + 'px';
+gameContainer.style.height = window.innerHeight + 'px';
+
+var layers = [background.layer(),ground.layer(),player.layer(),enemies.layer()];
+var gameStage = new stage(document.getElementById("container"),layers);
+
+gameStage.start();
+
+
+
+</script>
+</body>
+</html>
