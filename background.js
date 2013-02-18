@@ -89,6 +89,7 @@ var player = (function(dimensions){
 		backgroundImage: "rabbit"
 	}).bottom(50).addTo(playerLayer);
 		  
+	var defaultYPosition = rabbit.get('y');	  
 		  	 
 	rabbit.attach({
 	  // make the rabbit jump when you click him	
@@ -100,7 +101,7 @@ var player = (function(dimensions){
 	              set: "y"
 	      }).
 	      transition(rabbit, 400, {
-	              to: rabbit.get('y'),
+	              to: defaultYPosition,
 	              effect: collie.Effect.easeIn,
 	              set: "y"
 	      });
