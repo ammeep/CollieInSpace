@@ -2,6 +2,17 @@
 	
 	global.game = {};
 	
+	global.game.dimensions = (function(){
+		var isBackgroundSmall = document.body.clientWidth <= 640;		
+		return { 
+			scaleRatio : isBackgroundSmall ? 2 : 1,
+			width : isBackgroundSmall ? 320 : 800,
+			height: isBackgroundSmall ? 320 : 445
+		};
+	})();
+	
+
+	
 	var collieTheExplorer = (function () {
   
 	  	var gameStage;
@@ -27,7 +38,7 @@
 	    function initialiseGameObjects(){
 	    	var layers;
 	       layers = [background.layer(),ground.layer(),enemies.layer(),player.layer()];
-	       gameStage = new stage(gameContainer,layers,enemies, player);
+	       gameStage = new game.stage(gameContainer,layers,enemies, player);
 	    }
 	    
 	    return{
