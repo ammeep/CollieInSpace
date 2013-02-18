@@ -30,7 +30,7 @@ gameContainer.style.width = window.innerWidth + 'px';
 gameContainer.style.height = window.innerHeight + 'px';
 
 var layers = [background.layer(),ground.layer(),player.layer(),enemies.layer()];
-var gameStage = new stage(document.getElementById("container"),layers);
+var gameStage = new stage(document.getElementById("container"),layers,enemies, player);
 
 gameStage.start();
 

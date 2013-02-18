@@ -1,5 +1,5 @@
 
-var stage = (function(gameStage,layers) {
+var stage = (function(gameStage,layers,enemies,player) {
 	
 	function overlapedArea(a, b, d) {
 			
@@ -9,7 +9,20 @@ var stage = (function(gameStage,layers) {
 			collie.Renderer.addLayer(value);
 	});
 	
+	function loopOnce(){
+		
+			var playerX = player.get('x');
+			enemies.killEnemyAt(playerX);
+			if(enemies.areDead()){
+				reset();
+				alert("you win!")
+			}
 
+	};
+	
+	function reset(){
+			collie.Renderer.stop();	
+	}
 	
 	collie.Renderer.load(gameStage);
 	
@@ -18,19 +31,22 @@ var stage = (function(gameStage,layers) {
 		var self = this;
 		
 		this.start = function(){
-			this.reset();
+			collie.Renderer.start(1000 / 30, function() {
+				// check the player isnt dead or other objects arnt dead.
+				//respond to movement given player position...	
+				loopOnce()
+			
+			});
 		};
 		
 		this.reset = function() {
-			// reset layers and rabit and stuff.			
-			return self;		
+			// reset layers and rabit and stuff.	
+		
+			
+		
 		};
 		
-		collie.Renderer.start(1000 / 30, function() {
-			// check the player isnt dead or other objects arnt dead.
-			//respond to movement given player position...	
-		});
-		
+				
 		return this;
 		
 	}).call({});
@@ -49,4 +65,5 @@ game.dimensions = (function(){
 		height: isBackgroundSmall ? 320 : 445
 	};
 })();
+
 

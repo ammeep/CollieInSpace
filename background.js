@@ -152,7 +152,7 @@ var player = (function(dimensions){
 		
 		jump : function(){jumpRabit();},
 		
-		
+		get : function (options) { return rabbit.get(options); }
 			
 	};
 })(game.dimensions);
@@ -171,7 +171,9 @@ var mushroom = (function(layer, initalX){
 	var mushroomBounce = collie.Timer.cycle(mushroom, "11fps",{from:0, to: 5, loop:0});
 	
 	return{
-		set : function (options) { mushroom.set(options); }
+		set : function (options) { mushroom.set(options); },
+		
+		get : function (options) { return mushroom.get(options); }
 	};
 
 });
@@ -188,27 +190,36 @@ var enemies = (function(dimensions){
 		var spawnPoints = [];
 		for (var i=0;i<10;i++)
 		{ 
-			spawnPoints[i] = Math.floor((Math.random()*(dimensions.width * 8))+(dimensions.width + 30));
+			spawnPoints[i] = Math.floor((Math.random()*(dimensions.width * 3))+(dimensions.width + 30));
 		}	
 		return spawnPoints;
 	};
 	
-	var currentEnemies = [];
+	var aliveEnemies = [];
+	var deadEnemies  = [];
 	
 	$.each(getNextSpwanPoints(),function(index,value){
-		currentEnemies[index] = new mushroom(enemyLayer,value);
+		aliveEnemies[index] = new mushroom(enemyLayer,value);
 	});
 	
 	var startMovingEnemies = function(){			
-		$.each(currentEnemies,function(index,value){
+		$.each(aliveEnemies,function(index,value){
 			value.set({velocityX: -200});
 		});
 	};
 	
 	var stopMovingEnemies = function(){			
-		$.each(currentEnemies,function(index,value){
+		$.each(aliveEnemies,function(index,value){
 			value.set({velocityX: 0});
 		});
+	};
+	
+	var isAtPosition = function(enemy, xPosition){
+		var mushroomX = enemy.get("x");
+		var mushroomBufferZone = enemy.get("width") / 2;
+		var farLeftMushroomBoundary = mushroomX - mushroomBufferZone;
+		var farRightMushroomBoundary = mushroomX + mushroomBufferZone;  
+		return xPosition >= farLeftMushroomBoundary && farRightMushroomBoundary;
 	};
 		
 	PubSub.subscribe('playerMovingRight', function(){startMovingEnemies();});
@@ -217,6 +228,21 @@ var enemies = (function(dimensions){
 	return {		
 		layer : function(){
 			return enemyLayer;
+		},
+		
+		killEnemyAt:function(xPosition){
+			
+			for(var i = aliveEnemies.length; i--; i === 0){
+				var enemy = aliveEnemies[i];
+				if (isAtPosition(enemy, xPosition)){
+					aliveEnemies.splice(i, 1);
+					deadEnemies.push(enemy);
+				}
+			}
+		},
+		
+		areDead: function(){
+			return aliveEnemies.length === 0;
 		}
 			
 	};
