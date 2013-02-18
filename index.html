@@ -6,11 +6,11 @@
 </head>
 <body>
 <div id="container"></div>
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="pubsub.js"></script>
-<script type="text/javascript" src="collie.min.js"></script>
-<script type="text/javascript" src="stage.js"></script>
-<script type="text/javascript" src="background.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/pubsub.js"></script>
+<script type="text/javascript" src="js/collie.min.js"></script>
+<script type="text/javascript" src="js/stage.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
 <script type="text/javascript">
 
 
@@ -29,7 +29,7 @@ var gameContainer = document.getElementById('container');
 gameContainer.style.width = window.innerWidth + 'px';
 gameContainer.style.height = window.innerHeight + 'px';
 
-var layers = [background.layer(),ground.layer(),player.layer(),enemies.layer()];
+var layers = [background.layer(),ground.layer(),enemies.layer(),player.layer()];
 var gameStage = new stage(document.getElementById("container"),layers,enemies, player);
 
 gameStage.start();
