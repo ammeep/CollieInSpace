@@ -1,11 +1,8 @@
 (function (game){
 	
-	game.engine = (function(gameStage,layers,enemies,player) {
+	game.engine = (function(gameStage,enemies,player) {
 					
-				$.each(layers,function(index,value){
-						collie.Renderer.addLayer(value);
-				});
-				
+	
 				function loopOnce(){					
 						var playerX = player.get('x');
 						enemies.killEnemyAt(playerX);
