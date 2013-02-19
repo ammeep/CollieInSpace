@@ -8,4 +8,7 @@
 .splash-screen{	
 	color: white;
 	display: none;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: x-large;
+	text-align: center;
 }
