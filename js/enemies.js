@@ -63,11 +63,6 @@
 						return xPosition >= farLeftMushroomBoundary && farRightMushroomBoundary;
 					};
 						
-					var kill = function(enemy){
-						aliveEnemies.splice(enemy, 1);
-						deadEnemies.push(enemy);
-						enemy.kill();						
-					};
 						
 					PubSub.subscribe('playerMovingRight', function(){startMovingEnemies();});
 					PubSub.subscribe('playerNotMoving'  , function(){stopMovingEnemies();});
@@ -81,12 +76,15 @@
 							for(var i = aliveEnemies.length; i--; i === 0){
 								var enemy = aliveEnemies[i];
 								if (isAtPosition(enemy, xPosition)){
-									kill(enemy);
+									aliveEnemies.splice(i, 1);
+									deadEnemies.push(enemy);
+									enemy.kill();	
 								}
 							}
 						},
 						
 						areDead: function(){
+							console.log(aliveEnemies.length === 0);
 							return aliveEnemies.length === 0;
 						}
 							

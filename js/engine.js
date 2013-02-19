@@ -1,11 +1,7 @@
-(function (game){
+(function (game, vent){
 	
 	game.engine = (function(gameStage,enemies,player) {
-									
-				function reset(){
-					collie.Renderer.stop();
-				}
-							
+												
 				return (function() {				
 					var self = this;					
 					this.start = function(){
@@ -13,8 +9,8 @@
 							var playerX = player.get('x');
 							enemies.killEnemyAt(playerX);
 							if(enemies.areDead()){
-								reset();
-								alert("you win!")
+								collie.Renderer.stop();
+								vent.publish('game-is-won')
 							}						
 						});
 					};						
@@ -22,4 +18,4 @@
 				})();
 				
 			});	
-})(game);
+})(game,PubSub);

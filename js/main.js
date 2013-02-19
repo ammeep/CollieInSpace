@@ -17,9 +17,14 @@
 	  	var gameEngine;
 		var gameContainer;
 		 
+		vent.subscribe('game-is-won',function(){showWinnersScreen();}); 
+		
 		function showStartText(){
-			$('#container').html($('#startScreen').show());
-			
+			$('#container').html($('#startScreen').show());		
+		} 
+		
+		function showWinnersScreen(){
+			$('#container').html($('#startScreen').show());		
 		}  
 		  
 	    function initialiseCollieImageManager(){
