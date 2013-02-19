@@ -23,6 +23,8 @@
 				rabbit:   "images/rabbit_walk.png",
 				ground:   "images/ground.png",
 				sky:	  "images/sky.png",
+				planetSky:"images/planetSky.jpg",
+				rocket:   "images/rocket.png",
 				cloud2:	  "images/cloud2.png",
 				mountain: "images/mountain.png",
 				mushroom: "images/mushroom.png"
