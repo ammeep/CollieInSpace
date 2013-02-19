@@ -22,14 +22,7 @@
 									backgroundImage : "rocket",
 									positionRepeat : true,
 						}).addTo(backgroundLayer);		
-					  
-					  
-						var oMountain = new collie.DisplayObject({
-									x : 0,
-									backgroundImage : "mountain"
-						}).addTo(backgroundLayer).bottom(100);  
-						  
-						  
+					    
 						return {	
 							layer : function(){
 									return backgroundLayer;
