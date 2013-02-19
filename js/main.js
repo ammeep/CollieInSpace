@@ -37,14 +37,14 @@
 	    
 	    function initialiseGameObjects(){
 	    
-	       var layers = [background.layer(),ground.layer(),enemies.layer(),player.layer()];
+	       var layers = [background.layer(),ground.layer(),game.enemies.layer(),player.layer()];
 	       
 	       $.each(layers,function(index,value){
 				collie.Renderer.addLayer(value);
 		   });				
 		   
 		   collie.Renderer.load(gameContainer[0]);
-	       gameEngine = new game.engine(gameContainer,enemies, player);
+	       gameEngine = new game.engine(gameContainer,game.enemies, player);
 	    }
 	    
 	    return{
