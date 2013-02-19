@@ -37,7 +37,7 @@
 	    
 	    function initialiseGameObjects(){
 	    
-	       var layers = [background.layer(),ground.layer(),game.enemies.layer(),game.player.layer()];
+	       var layers = [game.background.layer(),game.ground.layer(),game.enemies.layer(),game.player.layer()];
 	       
 	       $.each(layers,function(index,value){
 				collie.Renderer.addLayer(value);
