@@ -15,12 +15,13 @@
 					
 					return{
 						set : function (options) { mushroom.set(options); },						
-						get : function (options) { return mushroom.get(options); }
+						get : function (options) { return mushroom.get(options); },	
+						kill: function(){layer.removeChild(mushroom);}					
 					};			
 				});
 				
 	game.enemies = (function(dimensions){
-		
+					
 					var enemyLayer = new collie.Layer({
 						width: dimensions.width,
 						height: dimensions.height
@@ -62,6 +63,12 @@
 						return xPosition >= farLeftMushroomBoundary && farRightMushroomBoundary;
 					};
 						
+					var kill = function(enemy){
+						aliveEnemies.splice(enemy, 1);
+						deadEnemies.push(enemy);
+						enemy.kill();						
+					};
+						
 					PubSub.subscribe('playerMovingRight', function(){startMovingEnemies();});
 					PubSub.subscribe('playerNotMoving'  , function(){stopMovingEnemies();});
 				
@@ -74,8 +81,7 @@
 							for(var i = aliveEnemies.length; i--; i === 0){
 								var enemy = aliveEnemies[i];
 								if (isAtPosition(enemy, xPosition)){
-									aliveEnemies.splice(i, 1);
-									deadEnemies.push(enemy);
+									kill(enemy);
 								}
 							}
 						},
