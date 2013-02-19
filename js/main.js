@@ -2,12 +2,11 @@
 	
 	global.game = {};
 	
-	global.game.dimensions = (function(){
-		var isBackgroundSmall = document.body.clientWidth <= 640;		
+	global.game.dimensions = (function(){	
 		return { 
-			scaleRatio : isBackgroundSmall ? 2 : 1,
-			width : isBackgroundSmall ? 320 : 800,
-			height: isBackgroundSmall ? 320 : 445
+			scaleRatio :  1,
+			width : 800,
+			height: 445
 		};
 	})();
 	
@@ -17,9 +16,14 @@
   
 	  	var gameEngine;
 		var gameContainer;
+		 
+		function showStartText(){
+			$('#container').html($('#startScreen').show());
+			
+		}  
 		  
 	    function initialiseCollieImageManager(){
-	        collie.ImageManager.add({
+	       collie.ImageManager.add({
 				rabbit:   "images/rabbit_walk.png",
 				ground:   "images/ground.png",
 				sky:	  "images/sky.png",
@@ -50,18 +54,30 @@
 	    }
 	    
 	    return{
+	    
+	    	showStartScreen:function(){
+		    	showStartText();
+	    	},
+	    	
 	        startGame: function(){
 	            initialiseCollieImageManager();   
 	            initialiseGameCanvas();    
 	            initialiseGameObjects();
-	            gameEngine.start();         
+	            gameEngine.start();   
+	            $('#startScreen').hide();      
 	        }            
 	    };
    
     })();
 	
 	$(document).ready(function () {
-		collieTheExplorer.startGame();  
+		collieTheExplorer.showStartScreen();  
+		$(document).keydown(function(e){
+				var keyCode = e.keyCode || e.which;
+			    if(keyCode == 13){
+			    	collieTheExplorer.startGame();
+			    }
+		});
 	});
 	
 })(window, jQuery, PubSub);

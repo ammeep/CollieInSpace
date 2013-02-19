@@ -1,0 +1,11 @@
+.container{
+	background: black;
+	margin: 5px;
+	padding:5px;
+	height: 445px !important;
+	width: 800px !important;
+}
+.splash-screen{	
+	color: white;
+	display: none;
+}
