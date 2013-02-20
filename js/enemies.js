@@ -35,20 +35,20 @@
 						return spawnPoints;
 					};
 					
-					var aliveEnemies = [];
+					var currentEnemies = [];
 					
 					$.each(getNextSpwanPoints(),function(index,value){
-						aliveEnemies[index] = new game.mushroom(enemyLayer,value);
+						currentEnemies[index] = new game.mushroom(enemyLayer,value);
 					});
 					
 					var startMovingEnemies = function(){			
-						$.each(aliveEnemies,function(index,value){
+						$.each(currentEnemies,function(index,value){
 							value.set({velocityX: -200});
 						});
 					};
 					
 					var stopMovingEnemies = function(){			
-						$.each(aliveEnemies,function(index,value){
+						$.each(currentEnemies,function(index,value){
 							value.set({velocityX: 0});
 						});
 					};
@@ -73,8 +73,8 @@
 						},
 						
 						anyAtPosition: function(xPosition){
-							for(var i = aliveEnemies.length; i--; i === 0){
-								var enemy = aliveEnemies[i];
+							for(var i = currentEnemies.length; i--; i === 0){
+								var enemy = currentEnemies[i];
 								if (isAtPosition(enemy, xPosition)){
 									return true;
 								}
@@ -84,7 +84,7 @@
 						
 						allBehindPosition: function(xPosition){
 							var allBehind = false;
-							$.each(aliveEnemies,function(index,value){
+							$.each(currentEnemies,function(index,value){
 								return isBehindPosition(value,xPosition);
 							});	
 							return allBehind;						
