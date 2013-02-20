@@ -15,8 +15,7 @@
 					
 					return{
 						set : function (options) { mushroom.set(options); },						
-						get : function (options) { return mushroom.get(options); },	
-						kill: function(){layer.removeChild(mushroom);}					
+						get : function (options) { return mushroom.get(options); },					
 					};			
 				});
 				
@@ -37,7 +36,6 @@
 					};
 					
 					var aliveEnemies = [];
-					var deadEnemies  = [];
 					
 					$.each(getNextSpwanPoints(),function(index,value){
 						aliveEnemies[index] = new game.mushroom(enemyLayer,value);
@@ -72,17 +70,6 @@
 					return {		
 						layer : function(){
 							return enemyLayer;
-						},
-						
-						killEnemyAt:function(xPosition){							
-							for(var i = aliveEnemies.length; i--; i === 0){
-								var enemy = aliveEnemies[i];
-								if (isAtPosition(enemy, xPosition)){
-									aliveEnemies.splice(i, 1);
-									deadEnemies.push(enemy);
-									enemy.kill();	
-								}
-							}
 						},
 						
 						anyAtPosition: function(xPosition){
