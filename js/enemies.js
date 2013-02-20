@@ -83,11 +83,10 @@
 						},
 						
 						areDead: function(){
-							console.log(aliveEnemies.length === 0);
 							return aliveEnemies.length === 0;
 						}
 							
 					};
-				})(game.dimensions);
+				});
 
 })(game);
