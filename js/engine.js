@@ -7,11 +7,13 @@
 					this.start = function(){
 						collie.Renderer.start(1000 / 30, function() {
 							var playerX = player.get('x');
-							var playerY = player.get('y');
-							enemies.killEnemyAt(playerX,playerY);
-							if(enemies.areDead()){
+							if(enemies.anyAtPosition(playerX)){
+							    collie.Renderer.stop();
+								vent.publish('game-is-lost');
+							}
+							if(enemies.allBehindPosition(playerX)){
 								collie.Renderer.stop();
-								vent.publish('game-is-won')
+								vent.publish('game-is-won');
 							}						
 						});
 					};						

@@ -59,9 +59,12 @@
 						var mushroomX = enemy.get("x");
 						var mushroomBufferZone = enemy.get("width") / 2;
 						var farLeftMushroomBoundary = mushroomX - mushroomBufferZone;
-						var farRightMushroomBoundary = mushroomX + mushroomBufferZone;  
-						return xPosition >= farLeftMushroomBoundary && farRightMushroomBoundary;
+						return xPosition >= farLeftMushroomBoundary;
 					};
+					
+					var isBehindPosition = function(enemy, xPosition){
+						return enemy.get('x') < xPosition;
+					}
 												
 					PubSub.subscribe('playerMovingRight', function(){startMovingEnemies();});
 					PubSub.subscribe('playerNotMoving'  , function(){stopMovingEnemies();});
@@ -82,9 +85,23 @@
 							}
 						},
 						
-						areDead: function(){
-							return aliveEnemies.length === 0;
-						}
+						anyAtPosition: function(xPosition){
+							for(var i = aliveEnemies.length; i--; i === 0){
+								var enemy = aliveEnemies[i];
+								if (isAtPosition(enemy, xPosition)){
+									return true;
+								}
+							}
+							return false;
+						},
+						
+						allBehindPosition: function(xPosition){
+							var allBehind = false;
+							$.each(aliveEnemies,function(index,value){
+								return isBehindPosition(value,xPosition);
+							});	
+							return allBehind;						
+							}
 							
 					};
 				});

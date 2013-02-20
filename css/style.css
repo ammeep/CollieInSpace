@@ -34,5 +34,17 @@
 	padding:5px;
 }
 
+.gameover-screen{	
+	color: white;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: x-large;
+	text-align: center;
+	background: black;
+	height: 445px !important;
+	width:  800px !important;
+	margin: 5px;
+	padding:5px;
+}
+
 
 

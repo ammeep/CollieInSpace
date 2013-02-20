@@ -18,24 +18,36 @@
 		var gameContainer;
 		 
 		vent.subscribe('game-is-won',function(){showWinnersScreen();}); 
+		vent.subscribe('game-is-lost',function(){showGameOverScreen();}); 
 		
 		function showStartText(){
 			$('.splash-screen').show();
 			$('.game-container').hide();
-			$('.winning-screen').hide();		
+			$('.winning-screen').hide();	
+			$('.gameover-screen').hide();	
+	
 		} 
 		
 		function showGame(){
 			$('.splash-screen').hide();
 			$('.game-container').show();
-			$('.winning-screen').hide();	
+			$('.winning-screen').hide();
+		    $('.gameover-screen').hide();		
 		}
 		
 		function showWinnersScreen(){
 			$('.splash-screen').hide();
 			$('.game-container').hide();
 			$('.winning-screen').show();	
+			$('.gameover-screen').hide();	
 		}  
+		
+		function showGameOverScreen(){
+			$('.splash-screen').hide();
+			$('.game-container').hide();
+			$('.winning-screen').hide();
+			$('.gameover-screen').show();	
+		}
 		  
 	    function initialiseCollieImageManager(){
 	       collie.ImageManager.add({
@@ -86,12 +98,13 @@
     })();
 	
 	$(document).ready(function () {
-		collieTheExplorer.showStartScreen();  
-		$(document).keydown(function(e){
-				var keyCode = e.keyCode || e.which;
-			    if(keyCode == 13){
-			    	collieTheExplorer.startGame();
-			    }
+		collieTheExplorer.showStartScreen();
+		$(document).on('keydown', function(e){
+			var keyCode = e.keyCode || e.which;
+		    if(keyCode == 13){
+		    	$(this).off(e);
+		    	collieTheExplorer.startGame();
+		    }
 		});
 	});
 	
