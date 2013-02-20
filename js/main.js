@@ -20,11 +20,21 @@
 		vent.subscribe('game-is-won',function(){showWinnersScreen();}); 
 		
 		function showStartText(){
-			$('#container').html($('#startScreen').show());		
+			$('.splash-screen').show();
+			$('.game-container').hide();
+			$('.winning-screen').hide();		
 		} 
 		
+		function showGame(){
+			$('.splash-screen').hide();
+			$('.game-container').show();
+			$('.winning-screen').hide();	
+		}
+		
 		function showWinnersScreen(){
-			$('#container').html($('#startScreen').show());		
+			$('.splash-screen').hide();
+			$('.game-container').hide();
+			$('.winning-screen').show();	
 		}  
 		  
 	    function initialiseCollieImageManager(){
@@ -40,13 +50,13 @@
 	    }
 	
 	    function initialiseGameCanvas(){
-	       gameContainer = $('#container');
+	       gameContainer = $('.game-container');
 	       gameContainer.css('width', window.innerWidth + 'px');      
 	       gameContainer.css('height', window.innerHeight + 'px');
 	    }
 	    
 	    function initialiseGameObjects(){
-	    
+	    	
 	       var layers = [game.background.layer(),game.ground.layer(),game.enemies.layer(),game.player.layer()];
 	       
 	       $.each(layers,function(index,value){
@@ -68,7 +78,7 @@
 	            initialiseGameCanvas();    
 	            initialiseGameObjects();
 	            gameEngine.start();   
-	            $('#startScreen').hide();      
+	            showGame();    
 	        }            
 	    };
    

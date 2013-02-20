@@ -1,14 +1,38 @@
-.container{
+.wrapper{
+	
+}
+
+.game-container{
 	background: black;
+	height: 445px !important;
+	width:  800px !important;
 	margin: 5px;
 	padding:5px;
-	height: 445px !important;
-	width: 800px !important;
 }
+
 .splash-screen{	
 	color: white;
-	display: none;
 	font-family: Impact, Charcoal, sans-serif;
 	font-size: x-large;
 	text-align: center;
+	background: black;
+	height: 445px !important;
+	width:  800px !important;
+	margin: 5px;
+	padding:5px;
 }
+
+.winning-screen{	
+	color: white;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: x-large;
+	text-align: center;
+	background: black;
+	height: 445px !important;
+	width:  800px !important;
+	margin: 5px;
+	padding:5px;
+}
+
+
+

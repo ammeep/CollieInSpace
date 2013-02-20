@@ -62,8 +62,7 @@
 						var farRightMushroomBoundary = mushroomX + mushroomBufferZone;  
 						return xPosition >= farLeftMushroomBoundary && farRightMushroomBoundary;
 					};
-						
-						
+												
 					PubSub.subscribe('playerMovingRight', function(){startMovingEnemies();});
 					PubSub.subscribe('playerNotMoving'  , function(){stopMovingEnemies();});
 				
