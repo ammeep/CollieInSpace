@@ -92,12 +92,15 @@
 						},
 						
 						allBehindPosition: function(xPosition){
-							var allBehind = false;
-							$.each(currentEnemies,function(index,value){
-								return isBehindPosition(value,xPosition);
-							});	
-							return allBehind;						
+							var numberBehind = 0;
+							for(var i = currentEnemies.length; i--; i === 0){
+								var enemy = currentEnemies[i];
+								if (isBehindPosition(enemy,xPosition)){
+									numberBehind++;
+								}
 							}
+							return numberBehind === currentEnemies.length;
+						}
 							
 					};
 				});
