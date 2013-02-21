@@ -28,9 +28,13 @@
 					
 					var getNextSpwanPoints = function(){
 						var spawnPoints = [];
-						for (var i=0;i<5;i++)
-						{ 
-							spawnPoints[i] = Math.floor((Math.random()*(dimensions.width * 3))+(dimensions.width + 30));
+						var numberOfEnemies = 5;
+						var expandedWidth = dimensions.width * 3;
+						var minimumSpawnPoint = dimensions.width + 30;
+						var interval =expandedWidth/numberOfEnemies;
+						for (var i=0;i<numberOfEnemies;i++)
+						{ 							
+							spawnPoints[i] = (interval * i) + minimumSpawnPoint;
 						}	
 						return spawnPoints;
 					};
@@ -53,25 +57,14 @@
 						});
 					};
 					
-					var isAtPosition = function(enemy, xPosition, yPosition){
-					
+					var isAtPosition = function(enemy, xPosition, yPosition){					
 						var mushroomY = enemy.get('y');
-						
-						//console.log(yPosition);
-						//console.log(mushroomY);
-						if((yPosition + 165) < mushroomY){
-							// i jumped that mofo
-						}
-						
-						// get middle of the player
-						xPosition = xPosition + 65;
-						
+						xPosition = xPosition + 65;						
 						var playerHigherThanEnemy =	(yPosition + 165) < mushroomY;
 						var enemyX = enemy.get("x");
 						var enemyWidth = enemy.get("width");
 						var farLeftMushroomBoundary = enemyX + (enemyWidth / 4);
-						var farRightMushroomBoundary = enemyX + ((enemyWidth / 4) * 3)
-						
+						var farRightMushroomBoundary = enemyX + ((enemyWidth / 4) * 3)						
 						var overlap = xPosition > farLeftMushroomBoundary && xPosition < farRightMushroomBoundary;
 						return overlap && !playerHigherThanEnemy;
 					};
