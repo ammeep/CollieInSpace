@@ -7,7 +7,8 @@
 					this.start = function(){
 						collie.Renderer.start(1000 / 30, function() {
 							var playerX = player.get('x');
-							if(enemies.anyAtPosition(playerX)){
+							var playerY = player.get('y');
+							if(enemies.anyAtPosition(playerX,playerY)){
 							    collie.Renderer.stop();
 								vent.publish('game-is-lost');
 							}

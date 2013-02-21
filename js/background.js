@@ -4,7 +4,7 @@
 	
 						var backgroundLayer = new collie.Layer({
 									width :  dimensions.width,
-									height:  dimensions.Height
+									height:  dimensions.height
 						});
 						
 						var oBackground = new collie.DisplayObject({

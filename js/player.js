@@ -4,7 +4,7 @@
 	
 			var playerLayer = new collie.Layer({
 				width: dimensions.width,
-				height: dimensions.hight
+				height: dimensions.height
 			});
 			
 			var rabbit = new collie.DisplayObject({
@@ -22,7 +22,7 @@
 			  click: function (e) {
 			    collie.Timer.queue().
 			      transition(rabbit, 400, {
-			              to: rabbit.get('y') - 100,
+			              to: rabbit.get('y') - 200,
 			              effect: collie.Effect.easeOut,
 			              set: "y"
 			      }).

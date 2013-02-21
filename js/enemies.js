@@ -28,7 +28,7 @@
 					
 					var getNextSpwanPoints = function(){
 						var spawnPoints = [];
-						for (var i=0;i<10;i++)
+						for (var i=0;i<5;i++)
 						{ 
 							spawnPoints[i] = Math.floor((Math.random()*(dimensions.width * 3))+(dimensions.width + 30));
 						}	
@@ -53,11 +53,27 @@
 						});
 					};
 					
-					var isAtPosition = function(enemy, xPosition){
-						var mushroomX = enemy.get("x");
-						var mushroomBufferZone = enemy.get("width") / 2;
-						var farLeftMushroomBoundary = mushroomX - mushroomBufferZone;
-						return xPosition >= farLeftMushroomBoundary;
+					var isAtPosition = function(enemy, xPosition, yPosition){
+					
+						var mushroomY = enemy.get('y');
+						
+						//console.log(yPosition);
+						//console.log(mushroomY);
+						if((yPosition + 165) < mushroomY){
+							// i jumped that mofo
+						}
+						
+						// get middle of the player
+						xPosition = xPosition + 65;
+						
+						var playerHigherThanEnemy =	(yPosition + 165) < mushroomY;
+						var enemyX = enemy.get("x");
+						var enemyWidth = enemy.get("width");
+						var farLeftMushroomBoundary = enemyX + (enemyWidth / 4);
+						var farRightMushroomBoundary = enemyX + ((enemyWidth / 4) * 3)
+						
+						var overlap = xPosition > farLeftMushroomBoundary && xPosition < farRightMushroomBoundary;
+						return overlap && !playerHigherThanEnemy;
 					};
 					
 					var isBehindPosition = function(enemy, xPosition){
@@ -72,10 +88,10 @@
 							return enemyLayer;
 						},
 						
-						anyAtPosition: function(xPosition){
+						anyAtPosition: function(xPosition,yPosition){
 							for(var i = currentEnemies.length; i--; i === 0){
 								var enemy = currentEnemies[i];
-								if (isAtPosition(enemy, xPosition)){
+								if (isAtPosition(enemy, xPosition,yPosition)){
 									return true;
 								}
 							}
