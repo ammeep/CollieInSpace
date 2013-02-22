@@ -6,13 +6,11 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <title>Collie In Ppace by Amy Palamountain</title>
+    <link rel="stylesheet" type="text/css" href="game/css/style.css" media="screen" />
+    <title>Collie In Space by Amy Palamountain</title>
   </head>
 
   <body>
-
     <header>
       <div class="container">
         <h1>Collie In Space</h1>
@@ -28,6 +26,21 @@
 
     <div class="container">
       <section id="main_content">
+		<div class="wrapper">
+			<div class="game-container"></div>
+			<div class="splash-screen">
+				<h1>Planet Shroom</h1>
+				<h3>Press enter to start</h3>
+			</div>
+			<div class="winning-screen">
+				<h1>You Win!</h1>
+			</div>
+			<div class="gameover-screen">
+				<h1>Game Over</h1>
+				<h3>Press the up arrow key to jump over the shrooms</h3>
+			</div>
+		</div>
+		      
         <h3>Welcome to Collie In Space</h3>
 
 <p>A sample game built with Collie.js. This game was used in workshops designed to get kids interested in programming. This game is built in JavaScript, too make it as simple as possible for you to run the game at home, and view the source code. All you need is a browser.</p>
@@ -50,16 +63,25 @@
       </section>
     </div>
 
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-38721901-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
 
+<script type="text/javascript" src="game/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="game/js/pubsub.js"></script>
+<script type="text/javascript" src="game/js/collie.js"></script>
+<script type="text/javascript" src="game/js/main.js"></script>
+<script type="text/javascript" src="game/js/engine.js"></script>
+<script type="text/javascript" src="game/js/background.js"></script>
+<script type="text/javascript" src="game/js/ground.js"></script>
+<script type="text/javascript" src="game/js/enemies.js"></script>
+<script type="text/javascript" src="game/js/player.js"></script>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("UA-38721901-1");
+	pageTracker._trackPageview();
+	} catch(err) {}
+</script>
   </body>
 </html>
