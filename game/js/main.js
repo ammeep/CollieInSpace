@@ -22,7 +22,7 @@
 				rabbit:   "game/images/rabbit_walk.png",
 				ground:   "game/images/ground.png",
 				sky:	  "game/images/sky.png",
-				planetSky:"game/images/planetSky.jpg",
+				planetSky:"game/images/planetSky.png",
 				rocket:   "game/images/rocket.png",
 				cloud2:	  "game/images/cloud2.png",
 				mushroom: "game/images/mushroom.png"
